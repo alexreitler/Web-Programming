@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Clicker Game</title>
+    <style>
+      img {
+        position: absolute;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Image Clicker Game</h1>
+    <p>Click on the images as quickly as possible to get points!</p>
+    <p id="score">Score: 0</p>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      let score = 0;
+      let gameInterval;
+
+      function startGame() {
+        gameInterval = setInterval(function () {
+          // Get image source
+          const imgSrc = "gabi.jpg";
+          const img = $("<img>").attr("src", imgSrc).attr("width", "100px").attr("height", "200px");
+
+          // Set the image position randomly
+          const windowWidth = $(window).width() - 100;
+          const windowHeight = $(window).height() - 200;
+          const posX = Math.floor(Math.random() * windowWidth);
+          const posY = Math.floor(Math.random() * windowHeight);
+          img.css({ top: posY, left: posX });
+
+          // Add the image to the document
+          $("body").append(img);
+
+          // Remove the image after a short time
+          setTimeout(function () {
+            img.remove();
+          }, 1000);
+        }, 1000); // This value sets the image spawn rate
+      }
+
+      // When an image is clicked
+      $(document).on("click", "img", function () {
+        // Remove the image from the document
+        $(this).remove();
+        // Add a point to the score
+        score++;
+        $("#score").text("Score: " + score);
+        // End the game if the score is 10
+        if (score === 10) {
+          clearInterval(gameInterval);
+          alert("Congratulations, you won!");
+        }
+      });
+
+      // Start the game when the document is ready
+      $(document).ready(function () {
+        startGame();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<!--Website CSS Battle-->
+<!--1. Write a web page in which display
+    using style sheets the 3D button push
+    effect when the mouse is over it.
+    Develop two versions of this effect.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      :root {
+        --backgroundColor: rgba(246, 241, 209);
+        --colorShadeA: rgb(106, 163, 137);
+        --colorShadeB: rgb(121, 186, 156);
+        --colorShadeC: rgb(150, 232, 195);
+        --colorShadeD: rgb(187, 232, 211);
+        --colorShadeE: rgb(205, 255, 232);
+      }
+      body {
+        font-family: sans-serif;
+        font-size: 30;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        min-height: 100vh;
+        background: var(--backgroundColor);
+      }
+      main {
+        position: relative;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        padding: 45vh 0;
+      }
+      button.small-button {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        outline: 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--colorShadeA);
+        background: #fff;
+        border: none;
+        padding: 1em 2em;
+        margin: 5em;
+        transition: all 0.3s ease-out;
+        box-shadow: inset 0 -8px 0 0 rgba(0, 0, 0, 0.2),
+          1px 1px 0 0 var(--colorShadeA), 2px 2px 0 0 var(--colorShadeA),
+          3px 3px 0 0 var(--colorShadeA), 4px 4px 0 0 var(--colorShadeA),
+          5px 5px 0 0 var(--colorShadeA), 6px 6px 0 0 var(--colorShadeA),
+          7px 7px 0 0 var(--colorShadeA), 8px 8px 0 0 var(--colorShadeA),
+          9px 9px 0 0 var(--colorShadeA), 10px 10px 0 0 var(--colorShadeA),
+          11px 11px 0 0 var(--colorShadeA), 12px 12px 0 0 var(--colorShadeA);
+      }
+
+      button.small-button:hover {
+        transform: translate(-6px, -6px);
+        color: var(--colorShadeB);
+      }
+
+      button.small-button:active {
+        color: var(--colorShadeC);
+        box-shadow: inset 0 -4px 0 0 rgba(0, 0, 0, 0.2),
+          1px 1px 0 0 var(--colorShadeA), 2px 2px 0 0 var(--colorShadeA),
+          3px 3px 0 0 var(--colorShadeA), 4px 4px 0 0 var(--colorShadeA),
+          5px 5px 0 0 var(--colorShadeA);
+      }
+
+      button.big-button {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        outline: none;
+        vertical-align: middle;
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: var(--colorShadeA);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-family: inherit;
+        padding: 1em 2em;
+        border: 2px solid var(--colorShadeA);
+        border-radius: 0.75em;
+        background: var(--colorShadeE);
+        transform-style: preserve-3d;
+        transition: all 175ms cubic-bezier(0, 0, 1, 1);
+      }
+
+      button.big-button::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--colorShadeC);
+        border-radius: inherit;
+        box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.5em 0 0 var(--colorShadeA);
+        transform: translate3d(0, 0.5em, -1em);
+        transition: all 175ms cubic-bezier(0, 0, 1, 1);
+      }
+
+      button.big-button:hover {
+        background: var(--colorShadeD);
+        transform: translate(0, -0.5em);
+      }
+
+      button.big-button:hover::before {
+        transform: translate3d(0, 0.75em, -1em);
+      }
+
+      button.big-button:active {
+        transform: translate(0em, 0.75em);
+        color: var(--colorShadeE);
+      }
+
+      button.big-button:active::before {
+        transform: translate3d(0, 0, -1em);
+
+        box-shadow: 0 0 0 2px var(--colorShadeB),
+          0 0.25em 0 0 var(--colorShadeB);
+      }
+    </style>
+    <button class="small-button">Click me!</button><br />
+    <button class="big-button">Click me too!</button>
+  </body>
+</html>

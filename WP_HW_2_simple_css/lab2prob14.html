@@ -1,0 +1,189 @@
+<!--14. Write a web page which should contain on a row several
+    thumbnail images and above that row should contain a larger image.
+    If the mouse is over a thumbnail image,
+    the larger version of that image should appear above it.-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      img {
+        max-width: 100%;
+        vertical-align: top;
+      }
+      .gallery {
+        display: flex;
+        justify-content: center;
+        margin: 10px auto;
+        max-width: 600px;
+        position: relative;
+        padding-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .gallery_img {
+        position: absolute;
+        top: 0;
+        left: 150px;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        height: 200px;
+      }
+
+      .gallery_thumbnail {
+        padding-top: 6px;
+        margin: 6px;
+        display: block;
+      }
+
+      .gallery_thumbnail_img {
+        height: 50px;
+        width: 50px;
+      }
+
+      .gallery_selector {
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .gallery_selector:checked + .gallery_img {
+        opacity: 1;
+      }
+
+      .gallery_selector:checked ~ .gallery_thumbnail > img {
+        box-shadow: 0 0 0 3px #0be2f6;
+      }
+    </style>
+    <section class="gallery">
+      <div class="gallery_item">
+        <input
+          id="poza1"
+          type="radio"
+          checked
+          name="gallery"
+          class="gallery_selector"
+          placeholder="thumbnail button 1"
+        />
+        <img
+          class="gallery_img"
+          src="./poze/cladire1.jpeg"
+          alt=""
+          title="thumbnail 1"
+        />
+        <label for="poza1" class="gallery_thumbnail">
+          <img
+            class="gallery_thumbnail_img"
+            src="./poze/cladire1.jpeg"
+            alt=""
+          />
+        </label>
+      </div>
+
+      <div class="gallery_item">
+        <input
+          id="poza2"
+          type="radio"
+          checked
+          name="gallery"
+          class="gallery_selector"
+          placeholder="thumbnail button 1"
+        />
+        <img
+          class="gallery_img"
+          src="./poze/cladire2.jpeg"
+          alt=""
+          title="thumbnail 1"
+        />
+        <label for="poza2" class="gallery_thumbnail">
+          <img
+            class="gallery_thumbnail_img"
+            src="./poze/cladire2.jpeg"
+            alt=""
+          />
+        </label>
+      </div>
+
+      <div class="gallery_item">
+        <input
+          id="poza3"
+          type="radio"
+          checked
+          name="gallery"
+          class="gallery_selector"
+          placeholder="thumbnail button 1"
+        />
+        <img
+          class="gallery_img"
+          src="./poze/cladire3.jpeg"
+          alt=""
+          title="thumbnail 1"
+        />
+        <label for="poza3" class="gallery_thumbnail">
+          <img
+            class="gallery_thumbnail_img"
+            src="./poze/cladire3.jpeg"
+            alt=""
+          />
+        </label>
+      </div>
+
+      <div class="gallery_item">
+        <input
+          id="poza4"
+          type="radio"
+          checked
+          name="gallery"
+          class="gallery_selector"
+          placeholder="thumbnail button 1"
+        />
+        <img
+          class="gallery_img"
+          src="./poze/cladire4.jpeg"
+          alt=""
+          title="thumbnail 1"
+        />
+        <label for="poza4" class="gallery_thumbnail">
+          <img
+            class="gallery_thumbnail_img"
+            src="./poze/cladire4.jpeg"
+            alt=""
+          />
+        </label>
+      </div>
+
+      <div class="gallery_item">
+        <input
+          id="poza5"
+          type="radio"
+          checked
+          name="gallery"
+          class="gallery_selector"
+          placeholder="thumbnail button 1"
+        />
+        <img
+          class="gallery_img"
+          src="./poze/cladire5.jpeg"
+          alt=""
+          title="thumbnail 1"
+        />
+        <label for="poza5" class="gallery_thumbnail">
+          <img
+            class="gallery_thumbnail_img"
+            src="./poze/cladire5.jpeg"
+            alt=""
+          />
+        </label>
+      </div>
+    </section>
+  </body>
+</html>
